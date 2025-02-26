@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 🔗 Link do arquivo CSV no OneDrive/SharePoint (modifique com seu link real)
-SHEET_URL = "https://unibrasilcombr-my.sharepoint.com/personal/978937_unibrasil_com_br/_layouts/15/download.aspx?SourceUrl=https://unibrasilcombr-my.sharepoint.com/:x:/g/personal/978937_unibrasil_com_br/EcBFFNYi-klPnnGcHqMRG9cBACEnVfHD_cr6vVx2XUsxTQ?e=huPRSL&format=csv"
+SHEET_URL = "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/modelo_notas.csv"
 
 @st.cache_data
 def carregar_dados():
