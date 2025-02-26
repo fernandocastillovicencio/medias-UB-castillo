@@ -1,32 +1,37 @@
 import streamlit as st
 import pandas as pd
 
-# 🔗 Link do arquivo CSV no OneDrive/SharePoint (modifique com seu link real)
+# 🔗 URL correta para o CSV no GitHub
 SHEET_URL = "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/modelo_notas.csv"
 
+# 📥 Função para carregar os dados
 @st.cache_data
 def carregar_dados():
-    df = pd.read_csv(SHEET_URL, delimiter=",")  # Ajuste o delimitador se necessário
+    df = pd.read_csv(SHEET_URL)
     return df
 
 df = carregar_dados()
 
-# 🎯 Sidebar para selecionar o RA
+# 🏆 Interface do Dashboard
+st.title("📊 Dashboard de Notas")
+st.write("Selecione seu RA para visualizar suas notas.")
+
+# 🎯 Barra lateral para escolher o RA do aluno
 st.sidebar.title("Consulta de Notas")
 ra = st.sidebar.selectbox("Selecione seu RA", df["RA"])
 
-# 🔍 Filtrar os dados do aluno
+# 🔍 Filtrar os dados do aluno selecionado
 aluno = df[df["RA"] == ra].iloc[0]
 
-# 🏆 Exibir Informações do Aluno
+# 🏆 Exibir informações do aluno
 st.title(f"📌 Notas de {aluno['Nome']}")
 st.write(f"**📚 Módulo:** {aluno['Módulo']}")
 
-# 📊 Barra de progresso da Nota Final
+# 📊 Barra de progresso para a Nota Final
 media = aluno["Nota Final (10,0)"]
 st.progress(media / 10)
 
-# 🏁 Definir situação do aluno
+# ✅ Definir a situação do aluno
 if media >= 6:
     status = "✅ Aprovado"
     cor = "green"
