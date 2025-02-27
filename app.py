@@ -34,7 +34,6 @@ ra_selecionado = st.selectbox("Escolha seu RA:", ra, index=0)
 #                                 MOSTRAR NOTAS                                #
 # ---------------------------------------------------------------------------- #
 # Exibir as notas apenas se um RA válido for selecionado
-# Exibir as notas apenas se um RA válido for selecionado
 if str(ra_selecionado) != '---':  # Garante que o valor seja comparado como string
     aluno = df[df['RA'] == str(ra_selecionado)]  # Filtra os dados do aluno com base no RA selecionado
 
@@ -55,63 +54,6 @@ if str(ra_selecionado) != '---':  # Garante que o valor seja comparado como stri
         #                               MÓDULO 1                               #
         # -------------------------------------------------------------------- #
         st.markdown(f"### MÓDULO 1:")
-
-        # ------------------------ atividades em sala ------------------------ #
-        st.markdown(f"##### 1. Atividades em sala (35%):")
-
-        # ----------------------- listas de exercícios ----------------------- #
-        st.markdown(f"##### 2. Lista de Exercícios (10%):")
-
-        # ------------------------------ artigo ------------------------------ #
-        st.markdown(f"##### 3. Artigo da Disciplina (20%):")
-
-        # --------------------------- prova escrita -------------------------- #
-        st.markdown(f"##### 4. Prova Escrita (35%):")
-
-        st.markdown("---")
-
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 2                               #
-        # -------------------------------------------------------------------- #
-        st.markdown(f"### MÓDULO 2:")
-
-        # ------------------------ atividades em sala ------------------------ #
-        st.markdown(f"##### 1. Atividades em sala (35%):")
-
-        # ----------------------- listas de exercícios ----------------------- #
-        st.markdown(f"##### 2. Lista de Exercícios (10%):")
-
-        # ------------------------------ artigo ------------------------------ #
-        st.markdown(f"##### 3. Artigo da Disciplina (20%):")
-
-        # --------------------------- prova escrita -------------------------- #
-        st.markdown(f"##### 4. Prova Escrita (35%):")
-
-        st.markdown("---")
-
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 3                               #
-        # -------------------------------------------------------------------- #
-        st.markdown(f"### MÓDULO 3:")
-
-        # ------------------------ atividades em sala ------------------------ #
-        st.markdown(f"##### 1. Atividades em sala (35%):")
-
-        # ----------------------- listas de exercícios ----------------------- #
-        st.markdown(f"##### 2. Lista de Exercícios (10%):")
-
-        # ------------------------------ artigo ------------------------------ #
-        st.markdown(f"##### 3. Artigo da Disciplina (20%):")
-
-        # --------------------------- prova escrita -------------------------- #
-        st.markdown(f"##### 4. Prova Escrita (35%):")
-
-        st.markdown("---")
-
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 3                               #
-        # -------------------------------------------------------------------- #
-        st.markdown(f"### MÓDULO 4:")
 
         # ------------------------ atividades em sala ------------------------ #
         st.markdown(f"##### 1. Atividades em sala (35%):")
