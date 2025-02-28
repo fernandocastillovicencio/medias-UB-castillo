@@ -7,9 +7,10 @@ from functions import mostrar_modulo
 
 # Título do aplicativo
 st.image("logoub.png", width=300)
-st.title("Escola Politécnica")
-st.title("Prof. Castillo")
-st.title("Médias 2025/1")
+st.markdown("## Escola Politécnica")
+
+st.markdown("#### Prof. Castillo")
+st.markdown("#### Médias 2025/1")
 
 # ---------------------------------------------------------------------------- #
 #                                CARREGAR TURMA                                #
