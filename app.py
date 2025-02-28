@@ -6,8 +6,10 @@ import pandas as pd
 from functions import mostrar_modulo
 
 # Título do aplicativo
-st.title("UniBrasil")
-st.title("Médias - Prof. Castillo")
+st.image("logoub.png", width=300)
+st.title("Escola Politécnica")
+st.title("Prof. Castillo")
+st.title("Médias 2025/1")
 
 # ---------------------------------------------------------------------------- #
 #                                CARREGAR TURMA                                #
