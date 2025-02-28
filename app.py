@@ -75,13 +75,12 @@ if df is not None:
         aluno = df[df['RA'] == str(ra_selecionado)]  # Filtra os dados do aluno com base no RA selecionado
 
         if not aluno.empty:
-            st.markdown("---")
-
             # ----------------{--------------- NOME ------------------------------- #
             nome = aluno['NC'].values[0]
             matricula = aluno['RA'].values[0]
 
-            st.write(f"## ALUNO: {nome}")
+            st.write(f"#### Aluno(a): {nome}")
+            st.write(f"#### RA: {matricula}")
             
             st.markdown("---")
             
