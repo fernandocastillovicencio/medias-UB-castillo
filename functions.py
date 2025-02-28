@@ -23,13 +23,15 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     if colunas.notna().any().any():
         # média
         media = colunas.apply(pd.to_numeric,errors='coerce').mean(axis=1,skipna=True).mean()
+        media = round(media,2)
         # nota
         if pd.notna(media):
             nota = media*peso
+            nota = round(nota,2)
             # mostrar tabela
-            st.write(colunas.round(2))
+            st.table(colunas.round(2))
             # mostrar média 
-            st.markdown(f"\tMédia: {media.round(2)} -- Pontos: {nota.round(2)}")
+            st.markdown(f"\tMédia: **{media}** (máximo 1.0) -- Pontos: **{nota}** (máximo: {peso})")
         # -------------------------------------------------------------------- #
     return nota
 
@@ -55,7 +57,8 @@ def mostrar_modulo(index,aluno):
     nota_prova = calcular_e_mostrar_notas(aluno, index, 'Q')
     # ------------------------------ média total ----------------------------- #
     media_modulo = nota_sala + nota_listas + nota_artigo + nota_prova
+    media_modulo = round(media_modulo,2)
     if media_modulo > 0.0:
-        st.markdown(f"##### Nota do Módulo: {media_modulo.round(2)}")
+        st.markdown(f"##### Média do Módulo: {media_modulo}")
     st.markdown("---")
     # ------------------------------------------------------------------------ #

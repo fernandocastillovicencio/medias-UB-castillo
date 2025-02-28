@@ -6,7 +6,8 @@ import pandas as pd
 from functions import mostrar_modulo
 
 # Título do aplicativo
-st.title("UniBrasil - Prof. Castillo - Médias")
+st.title("UniBrasil")
+st.title("Médias do Prof. Castillo")
 
 # ---------------------------------------------------------------------------- #
 #                                CARREGAR TURMA                                #
@@ -34,7 +35,7 @@ st.session_state.disciplina_selecionada_anterior = disciplina_selecionada
 
 # Exibe o nome da disciplina antes do título "Consulta de Notas"
 if disciplina_selecionada != '---':
-    st.write(f"## Disciplina: {disciplina_selecionada}")
+    st.write(f"## {disciplina_selecionada}")
 
 # Carrega o arquivo CSV de acordo com a disciplina selecionada
 if disciplina_selecionada != '---':
