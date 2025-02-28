@@ -9,7 +9,7 @@ from functions import mostrar_modulo
 st.image("logoub.png", width=300)
 st.markdown("## Escola Politécnica")
 
-st.markdown("#### Prof. Castillo")
+st.markdown("#### Prof. Fernando Castillo Vicencio")
 st.markdown("#### Médias 2025/1")
 
 # ---------------------------------------------------------------------------- #
