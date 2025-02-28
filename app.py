@@ -55,16 +55,62 @@ if str(ra_selecionado) != '---':  # Garante que o valor seja comparado como stri
         # -------------------------------------------------------------------- #
         st.markdown(f"### MÓDULO 1:")
 
-        # ------------------------ atividades em sala ------------------------ #
+        # ------------------------ ATIVIDADES EM SALA ------------------------ #
         st.markdown(f"##### 1. Atividades em sala (35%):")
+        # ------------------------------ tabela ------------------------------ #
+        # Seleciona as colunas que começam com "M1-S"
+        colunas = aluno.filter(regex='^M1-S')
+        # --------------------------- média e nota --------------------------- #
+        if colunas.notna().any().any():
+            # média e nota
+            media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
+            nota_sala = media * 1.0
+            st.write(colunas.round(2))
+            if pd.notna(media):
+                st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota_sala.round(2)}")
 
-        # ----------------------- listas de exercícios ----------------------- #
+        # ----------------------- LISTAS DE EXERCÍCIOS ----------------------- #
         st.markdown(f"##### 2. Lista de Exercícios (10%):")
+        # ------------------------------ tabela ------------------------------ #
+        # Seleciona as colunas que começam com "M1-S"
+        colunas = aluno.filter(regex='^M1-L')
+        # --------------------------- média e nota --------------------------- #
+        if colunas.notna().any().any():
+            # média e nota
+            media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
+            nota_listas = media * 1.0
+            st.write(colunas.round(2))
+            if pd.notna(media):
+                st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota_listas.round(2)}")
 
         # ------------------------------ artigo ------------------------------ #
+
         st.markdown(f"##### 3. Artigo da Disciplina (20%):")
+        # ------------------------------ tabela ------------------------------ #
+        # Seleciona as colunas que começam com "M1-A"
+        colunas = aluno.filter(regex='^M1-A')    
+        # --------------------------- média e nota --------------------------- #
+        if colunas.notna().any().any():
+            # média e nota
+            media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
+            nota_artigo = media * 1.0
+            st.write(colunas.round(2))
+            if pd.notna(media):
+                st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota_artigo.round(2)}")
+
 
         # --------------------------- prova escrita -------------------------- #
         st.markdown(f"##### 4. Prova Escrita (35%):")
-
-        st.markdown("---")
+        # ------------------------------ tabela ------------------------------ #
+        # Seleciona as colunas que começam com "M1-A"
+        colunas = aluno.filter(regex='^M1-Q')
+        # -------------------------- média e nota --------------------------- #
+        if colunas.notna().any().any():
+            # média e nota
+            media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
+            nota_prova = media * 1.0
+            st.write(colunas.round(2))
+            if pd.notna(media):
+                st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota_prova.round(2)}")
+        # -------------------------------------------------------------------- #
+        st.markdown("---") 
