@@ -7,7 +7,7 @@ from functions import mostrar_modulo
 
 # Título do aplicativo
 st.title("UniBrasil")
-st.title("Médias do Prof. Castillo")
+st.title("Médias - Prof. Castillo")
 
 # ---------------------------------------------------------------------------- #
 #                                CARREGAR TURMA                                #
@@ -81,7 +81,7 @@ if df is not None:
             nome = aluno['NC'].values[0]
             matricula = aluno['RA'].values[0]
 
-            st.write(f"## ALUNO: {nome} -- RA: {matricula}")
+            st.write(f"## ALUNO: {nome}")
             
             st.markdown("---")
             
