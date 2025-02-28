@@ -5,65 +5,98 @@ import streamlit as st
 import pandas as pd
 from functions import mostrar_modulo
 
-# ---------------------------------------------------------------------------- #
-#                           CARREGAR E CONFIGURAR CSV                          #
-# ---------------------------------------------------------------------------- #
-# Carregar o CSV diretamente do GitHub
-url = "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/modelo_notas.csv"
-df = pd.read_csv(url)
-
-# Converter a coluna RA para string
-df['RA'] = df['RA'].astype(str)
-
-# ---------------------------------------------------------------------------- #
-#                             STREAM LIST INTERFACE                            #
-# ---------------------------------------------------------------------------- #
 # Título do aplicativo
-st.title("Consulta de Notas")
+st.title("UniBrasil - Prof. Castillo - Médias")
+
+# ---------------------------------------------------------------------------- #
+#                                CARREGAR TURMA                                #
+# ---------------------------------------------------------------------------- #
+# Defina as opções de disciplinas com a chave sendo o código e o valor o nome da disciplina
+disciplinas = {
+    'RAA': 'Refrigeração e Ar-Condicionado',
+    'MaF': 'Máquinas de Fluxo',
+    'FdT': 'Fenômenos de Transporte',
+    'HiP': 'Hidráulica e Pneumática'
+}
+
+# Exibe o selectbox para o usuário escolher a disciplina
+disciplina_selecionada = st.selectbox("Escolha a Disciplina:", ['---'] + sorted(disciplinas.values()))
+
+# Inicializa o dataframe
+df = None
+
+# Reseta o RA toda vez que a disciplina mudar
+if 'ra_selecionado' in st.session_state and disciplina_selecionada != st.session_state.disciplina_selecionada_anterior:
+    st.session_state.ra_selecionado = '---'  # Reseta o RA
+
+# Salva a disciplina selecionada
+st.session_state.disciplina_selecionada_anterior = disciplina_selecionada
+
+# Exibe o nome da disciplina antes do título "Consulta de Notas"
+if disciplina_selecionada != '---':
+    st.write(f"## Disciplina: {disciplina_selecionada}")
+
+# Carrega o arquivo CSV de acordo com a disciplina selecionada
+if disciplina_selecionada != '---':
+    if disciplina_selecionada == 'Refrigeração e Ar-Condicionado':
+        df = pd.read_csv('RAA-medias.csv')  # Substitua pelo caminho do arquivo correspondente
+    elif disciplina_selecionada == 'Máquinas de Fluxo':
+        df = pd.read_csv('MaF-medias.csv')  # Substitua pelo caminho do arquivo correspondente
+    elif disciplina_selecionada == 'Fenômenos de Transporte':
+        df = pd.read_csv('FdT-medias.csv')  # Substitua pelo caminho do arquivo correspondente
+    elif disciplina_selecionada == 'Hidráulica e Pneumática':
+        df = pd.read_csv('HiP-medias.csv')  # Substitua pelo caminho do arquivo correspondente
+
+# ---------------------------------------------------------------------------- #
+#                                    MOSTRAR                                   #
+# ---------------------------------------------------------------------------- #
 
 # ---------------------------------------------------------------------------- #
 #                                  CRIAR LISTA                                 #
 # ---------------------------------------------------------------------------- #
-# Ordenar a lista de RAs em ordem crescente
-ra = ['---'] + sorted(df['RA'].astype(int).tolist())  # Converte para inteiro, ordena e depois volta para string
+# Verifique se o dataframe foi carregado corretamente
+if df is not None:
+    # Ordenar a lista de RAs em ordem crescente
+    df['RA'] = df['RA'].astype(str)
+    ra = ['---'] + sorted(df['RA'].astype(int).tolist())  # Converte para inteiro, ordena e depois volta para string
 
+    # Exibir a lista suspensa e definir "---" como a opção padrão
+    ra_selecionado = st.selectbox("Escolha seu RA:", ra, index=0 if 'ra_selecionado' not in st.session_state else ra.index(st.session_state.ra_selecionado))
 
-# Exibir a lista suspensa e definir "---" como a opção padrão
-ra_selecionado = st.selectbox("Escolha seu RA:", ra, index=0)
+    # Salvar a seleção de RA no session_state
+    st.session_state.ra_selecionado = ra_selecionado
 
-# ---------------------------------------------------------------------------- #
-#                                 MOSTRAR NOTAS                                #
-# ---------------------------------------------------------------------------- #
-# Exibir as notas apenas se um RA válido for selecionado
-if str(ra_selecionado) != '---':  # Garante que o valor seja comparado como string
-    aluno = df[df['RA'] == str(ra_selecionado)]  # Filtra os dados do aluno com base no RA selecionado
+    # ---------------------------------------------------------------------------- #
+    #                                 MOSTRAR NOTAS                                #
+    # ---------------------------------------------------------------------------- #
+    # Exibir as notas apenas se um RA válido for selecionado
+    if str(ra_selecionado) != '---':  # Garante que o valor seja comparado como string
+        aluno = df[df['RA'] == str(ra_selecionado)]  # Filtra os dados do aluno com base no RA selecionado
 
-# ---------------------------------------------------------------------------- #
-    if not aluno.empty:
-        
-        st.markdown("---")
+        if not aluno.empty:
+            st.markdown("---")
 
-        # ----------------{--------------- NOME ------------------------------- #
-        nome = aluno['NC'].values[0]
-        matricula = aluno['RA'].values[0]
+            # ----------------{--------------- NOME ------------------------------- #
+            nome = aluno['NC'].values[0]
+            matricula = aluno['RA'].values[0]
 
-        st.write(f"## ALUNO: {nome} -- RA: {matricula}")
-        
-        st.markdown("---")
-        
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 1                               #
-        # -------------------------------------------------------------------- #
-        mostrar_modulo("1",aluno)
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 2                               #
-        # -------------------------------------------------------------------- #
-        mostrar_modulo("2",aluno)
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 3                               #
-        # -------------------------------------------------------------------- #
-        mostrar_modulo("3",aluno)
-        # -------------------------------------------------------------------- #
-        #                               MÓDULO 4                               #
-        # -------------------------------------------------------------------- #
-        mostrar_modulo("4",aluno)
+            st.write(f"## ALUNO: {nome} -- RA: {matricula}")
+            
+            st.markdown("---")
+            
+            # -------------------------------------------------------------------- #
+            #                               MÓDULO 1                               #
+            # -------------------------------------------------------------------- #
+            mostrar_modulo(1,aluno)
+            # -------------------------------------------------------------------- #
+            #                               MÓDULO 2                               #
+            # -------------------------------------------------------------------- #
+            mostrar_modulo(2,aluno)
+            # -------------------------------------------------------------------- #
+            #                               MÓDULO 3                               #
+            # -------------------------------------------------------------------- #
+            mostrar_modulo(3,aluno)
+            # -------------------------------------------------------------------- #
+            #                               MÓDULO 4                               #
+            # -------------------------------------------------------------------- #
+            mostrar_modulo(4,aluno)

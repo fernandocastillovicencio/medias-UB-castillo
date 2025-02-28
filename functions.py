@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 
+
 # ---------------------------------------------------------------------------- #
 #                           CALCULAR E MOSTRAR NOTAS                           #
 # ---------------------------------------------------------------------------- #
@@ -28,7 +29,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             # mostrar tabela
             st.write(colunas.round(2))
             # mostrar média 
-            st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota.round(2)}")
+            st.markdown(f"\tMédia: {media.round(2)} -- Pontos: {nota.round(2)}")
         # -------------------------------------------------------------------- #
     return nota
 
@@ -39,7 +40,7 @@ def mostrar_modulo(index,aluno):
     # ------------------------------------------------------------------------ #
     #                                  MÓDULO                                  #
     # ------------------------------------------------------------------------ #
-    st.markdown(f"### MÓDULO {index}:")
+    st.markdown(f"### MÓDULO {str(index)}:")
     # -------------------------- atividades em sala -------------------------- #
     st.markdown(f"##### 1. Atividades em sala (35%):")
     nota_sala = calcular_e_mostrar_notas(aluno, index, 'S')
