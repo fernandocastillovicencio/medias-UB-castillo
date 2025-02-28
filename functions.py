@@ -12,10 +12,8 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     colunas = aluno.filter(regex=categoria)
     
     # ---------------------------- formatar tabela --------------------------- #
-    colunas = colunas.applymap(lambda x: f"{x:.2f}" if pd.notna(x) else x)
+    colunas = colunas.applymap(lambda x: f"{x:.2f}".rstrip('0').rstrip('.') if pd.notna(x) else x)
 
-
-    
     # --------------------------------- peso --------------------------------- #
     peso_dict = {
         'S': 3.5,
@@ -35,25 +33,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             nota = media*peso
             nota = round(nota,2)
             # mostrar tabela
-                # Exibe a tabela com a formatação de CSS para alterar o tamanho da fonte e ocultar o índice
-            st.markdown(
-            """
-            <style>
-            .streamlit-expanderHeader {
-                font-size: 12px;  /* Tamanho da fonte reduzido para título */
-            }
-            .stDataFrame {
-                font-size: 12px; /* Tamanho menor da fonte para o conteúdo da tabela */
-            }
-            .stDataFrame tbody td, .stDataFrame th {
-                text-align: center;
-                padding: 5px;
-            }
-            .stDataFrame thead {
-                display: none; /* Ocultar cabeçalho */
-            }
-            </style>
-            """, unsafe_allow_html=True)
+
             st.table(colunas)
             # mostrar média 
             st.markdown(f"\tMédia: **{media}** (máximo 1.0) -- Pontos: **{nota}** (máximo: {peso})")
