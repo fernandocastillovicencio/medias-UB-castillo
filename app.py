@@ -62,7 +62,8 @@ if df is not None:
     ra = ['---'] + sorted(df['RA'].astype(int).tolist())  # Converte para inteiro, ordena e depois volta para string
 
     # Exibir a lista suspensa e definir "---" como a opção padrão
-    ra_selecionado = st.selectbox("Escolha seu RA:", ra, index=0 if 'ra_selecionado' not in st.session_state else ra.index(st.session_state.ra_selecionado))
+    # ra_selecionado = st.select_slider("Escolha seu RA:", ra, index=0 if 'ra_selecionado' not in st.session_state else ra.index(st.session_state.ra_selecionado))
+    ra_selecionado = st.select_slider("Escolha seu RA:", options=ra)
 
     # Salvar a seleção de RA no session_state
     st.session_state.ra_selecionado = ra_selecionado
