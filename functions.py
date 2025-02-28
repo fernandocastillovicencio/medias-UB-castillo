@@ -13,18 +13,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     
     # ---------------------------- formatar tabela --------------------------- #
     colunas = colunas.applymap(lambda x: f"{x:.2f}" if pd.notna(x) else x)
-    # Exibe a tabela com a formatação de CSS para alterar o tamanho da fonte e ocultar o índice
-    st.markdown(
-        """
-        <style>
-        .dataframe td, .dataframe th {
-            font-size: 12px;  /* Tamanho menor da fonte */
-        }
-        .dataframe thead {
-            display: none; /* Ocultar a linha de índice */
-        }
-        </style>
-    """, unsafe_allow_html=True)
+
 
     
     # --------------------------------- peso --------------------------------- #
@@ -46,6 +35,18 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             nota = media*peso
             nota = round(nota,2)
             # mostrar tabela
+                # Exibe a tabela com a formatação de CSS para alterar o tamanho da fonte e ocultar o índice
+            st.markdown(
+                """
+                <style>
+                .dataframe td, .dataframe th {
+                    font-size: 12px;  /* Tamanho menor da fonte */
+                }
+                .dataframe thead {
+                    display: none; /* Ocultar a linha de índice */
+                }
+                </style>
+            """, unsafe_allow_html=True)
             st.table(colunas)
             # mostrar média 
             st.markdown(f"\tMédia: **{media}** (máximo 1.0) -- Pontos: **{nota}** (máximo: {peso})")
