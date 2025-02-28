@@ -37,15 +37,22 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             # mostrar tabela
                 # Exibe a tabela com a formatação de CSS para alterar o tamanho da fonte e ocultar o índice
             st.markdown(
-                """
-                <style>
-                .dataframe td, .dataframe th {
-                    font-size: 12px;  /* Tamanho menor da fonte */
-                }
-                .dataframe thead {
-                    display: none; /* Ocultar a linha de índice */
-                }
-                </style>
+            """
+            <style>
+            .streamlit-expanderHeader {
+                font-size: 12px;  /* Tamanho da fonte reduzido para título */
+            }
+            .stDataFrame {
+                font-size: 12px; /* Tamanho menor da fonte para o conteúdo da tabela */
+            }
+            .stDataFrame tbody td, .stDataFrame th {
+                text-align: center;
+                padding: 5px;
+            }
+            .stDataFrame thead {
+                display: none; /* Ocultar cabeçalho */
+            }
+            </style>
             """, unsafe_allow_html=True)
             st.table(colunas)
             # mostrar média 
