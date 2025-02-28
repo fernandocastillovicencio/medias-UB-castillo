@@ -1,13 +1,36 @@
-
 import streamlit as st
 import pandas as pd
-
 
 # ---------------------------------------------------------------------------- #
 #                           CALCULAR E MOSTRAR NOTAS                           #
 # ---------------------------------------------------------------------------- #
+
+@st.cache_data
+def carregar_dados(disciplina):
+    """
+    Função para carregar os dados de acordo com a disciplina selecionada
+    """
+    if disciplina == 'Refrigeração e Ar-Condicionado':
+        return pd.read_csv('RAA-medias.csv')
+    elif disciplina == 'Máquinas de Fluxo':
+        return pd.read_csv('MaF-medias.csv')
+    elif disciplina == 'Fenômenos de Transporte':
+        return pd.read_csv('FdT-medias.csv')
+    elif disciplina == 'Hidráulica e Pneumática':
+        return pd.read_csv('HiP-medias.csv')
+    return None
+
+def calcular_media(colunas):
+    """
+    Função para calcular a média, ignorando NaN e valores ausentes
+    """
+    media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
+    return round(media, 2) if pd.notna(media) else 0.0
+
 def calcular_e_mostrar_notas(aluno, modulo, prefixo):
-    # ------------------------------ selecionar ------------------------------ #
+    """
+    Função para calcular e mostrar as notas do aluno
+    """
     categoria = f"{modulo}-{prefixo}"
     colunas = aluno.filter(regex=categoria)
     
@@ -22,31 +45,29 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
         'A': 2.0
     }
     peso = peso_dict.get(prefixo, 0.0)
+
     # ----------------------------- média e nota ----------------------------- #
     nota = 0
     if colunas.notna().any().any():
         # média
-        media = colunas.apply(pd.to_numeric,errors='coerce').mean(axis=1,skipna=True).mean()
-        media = round(media,2)
+        media = calcular_media(colunas)
         # nota
         if pd.notna(media):
-            nota = media*peso
-            nota = round(nota,2)
+            nota = media * peso
             # mostrar tabela
-
             st.table(colunas)
             # mostrar média 
             st.markdown(f"\tMédia: **{media}** (máx. 1.0) -- Pontos: **{nota}** (máx. {peso})")
-        # -------------------------------------------------------------------- #
+        
     return nota
 
 # ---------------------------------------------------------------------------- #
 #                                MOSTRAR MÓDULO                                #
 # ---------------------------------------------------------------------------- #
-def mostrar_modulo(index,aluno):
-    # ------------------------------------------------------------------------ #
-    #                                  MÓDULO                                  #
-    # ------------------------------------------------------------------------ #
+def mostrar_modulo(index, aluno):
+    """
+    Função para exibir as notas do módulo, passando as respectivas informações
+    """
     st.markdown(f"### MÓDULO {str(index)}:")
     # -------------------------- atividades em sala -------------------------- #
     st.markdown(f"##### 1. Atividades em sala (35%):")
@@ -62,8 +83,7 @@ def mostrar_modulo(index,aluno):
     nota_prova = calcular_e_mostrar_notas(aluno, index, 'Q')
     # ------------------------------ média total ----------------------------- #
     media_modulo = nota_sala + nota_listas + nota_artigo + nota_prova
-    media_modulo = round(media_modulo,2)
+    media_modulo = round(media_modulo, 2)
     if media_modulo > 0.0:
         st.markdown(f"##### Média do Módulo: {media_modulo}")
     st.markdown("---")
-    # ------------------------------------------------------------------------ #
