@@ -10,6 +10,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     # ------------------------------ selecionar ------------------------------ #
     categoria = f"{modulo}-{prefixo}"
     colunas = aluno.filter(regex=categoria)
+    colunas = colunas.applymap(lambda x: f"{x:.2f}" if pd.notna(x) else x)
     # --------------------------------- peso --------------------------------- #
     peso_dict = {
         'S': 3.5,
@@ -29,7 +30,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             nota = media*peso
             nota = round(nota,2)
             # mostrar tabela
-            st.table(colunas.round(2))
+            st.table(colunas)
             # mostrar média 
             st.markdown(f"\tMédia: **{media}** (máximo 1.0) -- Pontos: **{nota}** (máximo: {peso})")
         # -------------------------------------------------------------------- #
