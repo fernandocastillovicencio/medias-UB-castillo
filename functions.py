@@ -2,7 +2,9 @@
 import streamlit as st
 import pandas as pd
 
-
+# ---------------------------------------------------------------------------- #
+#                           CALCULAR E MOSTRAR NOTAS                           #
+# ---------------------------------------------------------------------------- #
 def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     # ------------------------------ selecionar ------------------------------ #
     categoria = f"{modulo}-{prefixo}"
@@ -16,25 +18,28 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     }
     peso = peso_dict.get(prefixo, 0.0)
     # ----------------------------- média e nota ----------------------------- #
+    nota = 0
     if colunas.notna().any().any():
         # média
         media = colunas.apply(pd.to_numeric,errors='coerce').mean(axis=1,skipna=True).mean()
         # nota
-        nota = media*peso
-        # mostrar tabela
-        st.write(colunas.round(2))
-        # mostrar média
         if pd.notna(media):
+            nota = media*peso
+            # mostrar tabela
+            st.write(colunas.round(2))
+            # mostrar média 
             st.write(f"\tMédia: {media.round(2)}, Contribuição: {nota.round(2)}")
         # -------------------------------------------------------------------- #
-        return nota
-# ---------------------------------------------------------------------------- #
+    return nota
 
-def modulo(index,aluno):
+# ---------------------------------------------------------------------------- #
+#                                MOSTRAR MÓDULO                                #
+# ---------------------------------------------------------------------------- #
+def mostrar_modulo(index,aluno):
     # ------------------------------------------------------------------------ #
     #                                  MÓDULO                                  #
     # ------------------------------------------------------------------------ #
-    st.markdown(st.markdown(f"### MÓDULO {index}:"))
+    st.markdown(f"### MÓDULO {index}:")
     # -------------------------- atividades em sala -------------------------- #
     st.markdown(f"##### 1. Atividades em sala (35%):")
     nota_sala = calcular_e_mostrar_notas(aluno, index, 'S')
@@ -48,8 +53,8 @@ def modulo(index,aluno):
     st.markdown(f"##### 4. Prova Escrita (35%):")
     nota_prova = calcular_e_mostrar_notas(aluno, index, 'Q')
     # ------------------------------ média total ----------------------------- #
-    st.markdown(f"##### Nota do Módulo:")
     media_modulo = nota_sala + nota_listas + nota_artigo + nota_prova
-    st.write(f"\tMédia: {media_modulo.round(2)}")
-    
-    
+    if media_modulo > 0.0:
+        st.markdown(f"##### Nota do Módulo: {media_modulo.round(2)}")
+    st.markdown("---")
+    # ------------------------------------------------------------------------ #
