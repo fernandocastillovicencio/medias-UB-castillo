@@ -25,7 +25,7 @@ def calcular_media(colunas):
     Função para calcular a média, ignorando NaN e valores ausentes
     """
     media = colunas.apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True).mean()
-    return round(media, 2) if pd.notna(media) else 0.
+    return round(media, 2) if pd.notna(media) else 0.0
 
 def calcular_e_mostrar_notas(aluno, modulo, prefixo):
     """
