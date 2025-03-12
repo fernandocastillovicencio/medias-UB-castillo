@@ -17,7 +17,7 @@ def carregar_dados(disciplina):
     elif disciplina == 'Fenômenos de Transporte':
         return pd.read_csv('FdT-medias.csv')
     elif disciplina == 'Hidráulica e Pneumática':
-        return pd.read_csv('HiP-medias.csv')
+        return pd.read_csv('hidraulica-medias.csv')
     return None
 
 def calcular_media(colunas):
