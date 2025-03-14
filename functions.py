@@ -61,7 +61,7 @@ def calcular_e_mostrar_notas(aluno, modulo, prefixo):
             # mostrar tabela
             st.table(colunas)
             # mostrar média 
-            st.markdown(f"\tMédia: **{media:2f}** (máx. 1.0) -- Pontos: **{nota:2d}** (máx. {peso})")
+           st.markdown(f"\tMédia: **{media:.2f}** (máx. 1.0) -- Pontos: **{nota:.2f}** (máx. {peso})")
         
     return nota
 
