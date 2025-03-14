@@ -11,13 +11,13 @@ def carregar_dados(disciplina):
     Função para carregar os dados de acordo com a disciplina selecionada
     """
     if disciplina == 'Refrigeração e Ar-Condicionado':
-        return pd.read_csv('RAA-medias.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref1.csv')
     elif disciplina == 'Máquinas de Fluxo':
-        return pd.read_csv('MaF-medias.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv')
     elif disciplina == 'Fenômenos de Transporte':
-        return pd.read_csv('FdT-medias.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1.csv')
     elif disciplina == 'Hidráulica e Pneumática':
-        return pd.read_csv('hid2.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid1.csv')
     return None
 
 def calcular_media(colunas):
