@@ -14,8 +14,8 @@ def carregar_dados(disciplina):
         return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref1.csv')
         # return pd.read_csv('ref1.csv')
     elif disciplina == 'Máquinas de Fluxo':
-        # return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv')
-        return pd.read_csv('maq1.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv')
+        # return pd.read_csv('maq1.csv')
     elif disciplina == 'Fenômenos de Transporte':
         return pd.read_csv('https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1.csv')
         # return pd.read_csv('fen1.csv')
