@@ -22,9 +22,9 @@ def carregar_dados(disciplina):
         )
         # return pd.read_csv('maq1.csv')
     elif disciplina == "Fenômenos de Transporte":
-        return pd.read_csv(
-            # "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1.csv"
-        )
+        # return pd.read_csv(
+        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1.csv"
+        # )
         return pd.read_csv("fen1.csv")
     elif disciplina == "Hidráulica e Pneumática":
         return pd.read_csv(
