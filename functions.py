@@ -30,7 +30,7 @@ def carregar_dados(disciplina):
         # return pd.read_csv(
         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid1.csv"
         # )
-        return pd.read_csv("hid1.csv")
+        return pd.read_csv("hid2.csv")
     return None
 
 
