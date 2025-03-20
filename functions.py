@@ -28,7 +28,7 @@ def carregar_dados(disciplina):
         return pd.read_csv("fen1.csv")
     elif disciplina == "Hidráulica e Pneumática":
         return pd.read_csv(
-            "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid2tttt.csv"a
+            "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid2.csv"
         )
         # return pd.read_csv("hid2za.csv")
     return None
