@@ -13,7 +13,7 @@ def carregar_dados(disciplina):
     """
     if disciplina == "Refrigeração e Ar-Condicionado":
         return pd.read_csv(
-            "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref1.csv"
+            "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
         )
         # return pd.read_csv("refsss.csv")
     elif disciplina == "Máquinas de Fluxo":
