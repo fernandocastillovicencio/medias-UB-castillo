@@ -6,8 +6,6 @@ import streamlit as st
 
 from functions import carregar_dados, mostrar_modulo
 
-st.legacy_caching.clear_cache()
-
 # Título do aplicativo
 st.image("logoub.png", width=300)
 st.markdown("#### Escola Politécnica")
