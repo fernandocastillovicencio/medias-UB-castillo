@@ -4,7 +4,7 @@
 import pandas as pd
 import streamlit as st
 
-from functions import mostrar_modulo
+from functions import carregar_dados, mostrar_modulo
 
 # Título do aplicativo
 st.image("logoub.png", width=300)
@@ -45,32 +45,14 @@ st.session_state.disciplina_selecionada_anterior = disciplina_selecionada
 if disciplina_selecionada != "---":
     st.write(f"## {disciplina_selecionada}")
 
-# Carrega o arquivo CSV de acordo com a disciplina selecionada
+# Carrega o arquivo CSV de acordo com a disciplina selecionada usando a função de cache
 if disciplina_selecionada != "---":
-    if disciplina_selecionada == "Refrigeração e Ar-Condicionado":
-        df = pd.read_csv(
-            "RAA-medias.csv"
-        )  # Substitua pelo caminho do arquivo correspondente
-    elif disciplina_selecionada == "Máquinas de Fluxo":
-        df = pd.read_csv(
-            "MaF-medias.csv"
-        )  # Substitua pelo caminho do arquivo correspondente
-    elif disciplina_selecionada == "Fenômenos de Transporte":
-        df = pd.read_csv(
-            "FdT-medias.csv"
-        )  # Substitua pelo caminho do arquivo correspondente
-    elif disciplina_selecionada == "Hidráulica e Pneumática":
-        df = pd.read_csv(
-            "HiP-medias.csv"
-        )  # Substitua pelo caminho do arquivo correspondente
+    df = carregar_dados(disciplina_selecionada)
 
 # ---------------------------------------------------------------------------- #
 #                                    MOSTRAR                                   #
 # ---------------------------------------------------------------------------- #
 
-# ---------------------------------------------------------------------------- #
-#                                  CRIAR LISTA                                 #
-# ---------------------------------------------------------------------------- #
 # Verifique se o dataframe foi carregado corretamente
 if df is not None:
     # Ordenar a lista de RAs em ordem crescente
@@ -85,9 +67,6 @@ if df is not None:
     # Salvar a seleção de RA no session_state (sem precisar verificar se já existe ou não)
     st.session_state.ra_selecionado = ra_selecionado
 
-    # ---------------------------------------------------------------------------- #
-    #                                 MOSTRAR NOTAS                                #
-    # ---------------------------------------------------------------------------- #
     # Exibir as notas apenas se um RA válido for selecionado
     if str(ra_selecionado) != "---":  # Garante que o valor seja comparado como string
         aluno = df[
@@ -104,19 +83,6 @@ if df is not None:
 
             st.markdown("---")
 
-            # -------------------------------------------------------------------- #
-            #                               MÓDULO 1                               #
-            # -------------------------------------------------------------------- #
-            mostrar_modulo(1, aluno)
-            # -------------------------------------------------------------------- #
-            #                               MÓDULO 2                               #
-            # -------------------------------------------------------------------- #
-            mostrar_modulo(2, aluno)
-            # -------------------------------------------------------------------- #
-            #                               MÓDULO 3                               #
-            # -------------------------------------------------------------------- #
-            mostrar_modulo(3, aluno)
-            # -------------------------------------------------------------------- #
-            #                               MÓDULO 4                               #
-            # -------------------------------------------------------------------- #
-            mostrar_modulo(4, aluno)
+            # Exibindo os módulos de forma dinâmica (loop para módulos 1 a 4)
+            for i in range(1, 5):
+                mostrar_modulo(i, aluno)
