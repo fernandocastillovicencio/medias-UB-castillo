@@ -12,10 +12,10 @@ def carregar_dados(disciplina):
     Função para carregar os dados de acordo com a disciplina selecionada
     """
     if disciplina == "Refrigeração e Ar-Condicionado":
-        return pd.read_csv(
-            "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
-        )
-        # return pd.read_csv("refsss.csv")
+        # return pd.read_csv(
+        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
+        # )
+        return pd.read_csv("ref1a.csv")
     elif disciplina == "Máquinas de Fluxo":
         # return pd.read_csv(
         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv"
