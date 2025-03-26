@@ -102,5 +102,5 @@ def mostrar_modulo(index, aluno):
     media_modulo = nota_sala + nota_listas + nota_artigo + nota_prova
     # media_modulo = round(media_modulo, 2)
     if media_modulo > 0.0:
-        st.markdown(f"##### Média do Módulo: {media_modulo:.2f}")
+        st.markdown(f"##### Média do Módulo (Total de Pontos): {media_modulo:.2f}")
     st.markdown("---")
