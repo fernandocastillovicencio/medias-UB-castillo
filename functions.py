@@ -15,7 +15,7 @@ def carregar_dados(disciplina):
         # return pd.read_csv(
         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
         # )
-        return pd.read_csv("ref1bbbba.csv")
+        return pd.read_csv("ref1a.csv")
     elif disciplina == "Máquinas de Fluxo":
         # return pd.read_csv(
         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv"
