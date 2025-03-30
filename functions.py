@@ -6,31 +6,31 @@ import streamlit as st
 # ---------------------------------------------------------------------------- #
 
 
-@st.cache_data
-def carregar_dados(disciplina):
-    """
-    Função para carregar os dados de acordo com a disciplina selecionada
-    """
-    if disciplina == "Refrigeração e Ar-Condicionado":
-        # return pd.read_csv(
-        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
-        # )
-        return pd.read_csv("ref1a.csv")
-    elif disciplina == "Máquinas de Fluxo":
-        # return pd.read_csv(
-        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv"
-        # )
-        return pd.read_csv("maq1c.csv")
-    elif disciplina == "Fenômenos de Transporte":
-        # return pd.read_csv(
-        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1b.csv"
-        # )
-        return pd.read_csv("fen2.csv")
-    elif disciplina == "Hidráulica e Pneumática":
-        # return pd.read_csv(
-        #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid2.csv"
-        # )
-        # return pd.read_csv("hid1a.csv")
+# @st.cache_data
+# def carregar_dados(disciplina):
+#     """
+#     Função para carregar os dados de acordo com a disciplina selecionada
+#     """
+#     if disciplina == "Refrigeração e Ar-Condicionado":
+#         # return pd.read_csv(
+#         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
+#         # )
+#         return pd.read_csv("ref1a.csv")
+#     elif disciplina == "Máquinas de Fluxo":
+#         # return pd.read_csv(
+#         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/maq1.csv"
+#         # )
+#         return pd.read_csv("maq1c.csv")
+#     elif disciplina == "Fenômenos de Transporte":
+#         # return pd.read_csv(
+#         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/fen1b.csv"
+#         # )
+#         return pd.read_csv("fen2.csv")
+#     elif disciplina == "Hidráulica e Pneumática":
+#         # return pd.read_csv(
+#         #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/hid2.csv"
+#         # )
+#         return pd.read_csv("hid1a.csv")
 
 
 #     return None
