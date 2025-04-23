@@ -6,7 +6,7 @@ import streamlit as st
 # ---------------------------------------------------------------------------- #
 
 
-# @st.cache_data
+@st.cache_data
 # def carregar_dados(disciplina):
 #     """
 #     Função para carregar os dados de acordo com a disciplina selecionada
