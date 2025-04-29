@@ -23,7 +23,7 @@ import streamlit as st
 #         return pd.read_csv("db-MaF-1a.csv")
 #     elif disciplina == "Fenômenos de Transporte":
 #         return pd.read_csv("db-FdT-1a.csv")
-#     elif disciplina == "Hidráulica e Pneumática":
+    elif disciplina == "Hidráulica e Pneumática":
 #         return pd.read_csv("db-HiP-1a.csv")
 
 
