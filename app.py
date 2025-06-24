@@ -17,11 +17,11 @@ st.markdown("##### Médias 2025/1")
 # ---------------------------------------------------------------------------- #
 # Defina as opções de disciplinas com a chave sendo o código e o valor o nome da disciplina
 disciplinas = {
-#     "RAA": "Refrigeração e Ar-Condicionado",
-#     "MaF": "Máquinas de Fluxo",
-#     "FdT": "Fenômenos de Transporte",
-#     "HiP": "Hidráulica e Pneumática",
-# }
+    "RAA": "Refrigeração e Ar-Condicionado",
+    "MaF": "Máquinas de Fluxo",
+    "FdT": "Fenômenos de Transporte",
+    "HiP": "Hidráulica e Pneumática",
+}
 
 # Exibe o selectbox para o usuário escolher a disciplina
 disciplina_selecionada = st.selectbox(

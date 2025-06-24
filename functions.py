@@ -10,21 +10,21 @@ import streamlit as st
 # ---------------------------------------------------------------------------- #
 
 
-# def carregar_dados(disciplina):
-#     """
-#     Função para carregar os dados de acordo com a disciplina selecionada
-#     """
-#     if disciplina == "Refrigeração e Ar-Condicionado":
-#         #     # return pd.read_csv(
-#         #     #     #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
-#         #     # )
-#         return pd.read_csv("db-RAC-2d.csv")
-#     elif disciplina == "Máquinas de Fluxo":
-#         return pd.read_csv("db-MaF-2d.csv")
-#     elif disciplina == "Fenômenos de Transporte":
-#         return pd.read_csv("db-FdT-2e.csv")
-#     elif disciplina == "Hidráulica e Pneumática":
-#         return pd.read_csv("db-HiP-2a.csv")
+def carregar_dados(disciplina):
+    """
+    Função para carregar os dados de acordo com a disciplina selecionada
+    """
+    if disciplina == "Refrigeração e Ar-Condicionado":
+        #     # return pd.read_csv(
+        #     #     #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
+        #     # )
+        return pd.read_csv("db-RAC-2d.csv")
+    elif disciplina == "Máquinas de Fluxo":
+        return pd.read_csv("db-MaF-2d.csv")
+    elif disciplina == "Fenômenos de Transporte":
+        return pd.read_csv("db-FdT-2e.csv")
+    elif disciplina == "Hidráulica e Pneumática":
+        return pd.read_csv("db-HiP-2h.csv")
 
 
 # ---------------------------------------------------------------------------- #
