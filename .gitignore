@@ -1,0 +1,6 @@
+**/__pycache__
+**/*.cpy
+**/*.pyc
+*.cpy
+__pycache__
+__pycache__/functions.cpython-38.pyc
