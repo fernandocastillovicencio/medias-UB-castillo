@@ -18,7 +18,7 @@ def carregar_dados(disciplina):
         #     # return pd.read_csv(
         #     #     #     "https://raw.githubusercontent.com/fernandocastillovicencio/medias-UB-castillo/main/ref2.csv"
         #     # )
-        return pd.read_csv("db-RAC-2e.csv")
+        return pd.read_csv("db-RAC-2b.csv")
     elif disciplina == "Máquinas de Fluxo":
         return pd.read_csv("db-MaF-2e.csv")
     elif disciplina == "Fenômenos de Transporte":
