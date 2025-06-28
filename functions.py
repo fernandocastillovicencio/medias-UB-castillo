@@ -20,7 +20,7 @@ def carregar_dados(disciplina):
         #     # )
         return pd.read_csv("db-RAC-2b.csv")
     elif disciplina == "Máquinas de Fluxo":
-        return pd.read_csv("db-MaF-2e.csv")
+        return pd.read_csv("db-MaF-2b.csv")
     elif disciplina == "Fenômenos de Transporte":
         return pd.read_csv("db-FdT-2b.csv")
     elif disciplina == "Hidráulica e Pneumática":
